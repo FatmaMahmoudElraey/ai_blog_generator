@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Django App{% endblock %}</title>
+
+    <!-- Google Fonts for a cleaner look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'blog_generator/styles.css' %}" />
+
+    <!-- You can add more global CSS files here -->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">Blogify</a>
+
+        <!-- Always visible Welcome message -->
+        {% if user.is_authenticated %}
+        <span class="navbar-text text-white ms-3">
+          Welcome, {{ user.username }}
+        </span>
+        {% endif %}
+
+        <!-- Toggler Button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Home -->
+            <li class="nav-item">
+              <a
+                class="nav-link {% if request.path == '/' %}active{% endif %}"
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+
+            <!-- Saved Blog Posts -->
+            <li class="nav-item">
+              <a
+                class="nav-link me-5 ms-3 {% if request.path == '/blog-list' %}active{% endif %}"
+                href="/blog-list"
+              >
+                Saved Blog Posts
+              </a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <!-- Logout -->
+            <li class="nav-item">
+              <a class="default-btn my-2" href="{% url 'logout' %}"> Logout </a>
+            </li>
+            {% else %}
+            <!-- Login -->
+            <li class="nav-item">
+              <a class="default-btn my-2" href="{% url 'login' %}"> Login </a>
+            </li>
+
+            <!-- Signup -->
+            <li class="nav-item">
+              <a class="default-btn my-2" href="{% url 'signup' %}"> Signup </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Here is where your page content goes -->
+    <main class="hero-sec">{% block content %}{% endblock %}</main>
+
+    <!-- Bootstrap 5 JS + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your page-specific scripts go here -->
+    {% block scripts %} {% endblock %}
+  </body>
+</html>

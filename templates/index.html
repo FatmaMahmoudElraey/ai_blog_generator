@@ -1,163 +1,154 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Blog Generator</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+{% extends 'base.html' %} {% load static %} {% block title %}Home{% endblock %}
+{% block content %}
+<section class="">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Card Container -->
+        <div class="card shadow border-0">
+          <div class="card-body p-5">
+            <!-- Welcome Text -->
+            <div class="text-center mb-4">
+              <h1 class="fw-bold mb-3 gradient-text">Welcome to Blogify</h1>
+              <p class="text-light hero-p">
+                Transform YouTube videos into high-quality blog articles powered
+                by artificial intelligence.
+              </p>
+            </div>
 
-    <style>
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
+            <!-- Youtube Link Form -->
+            <div class="mb-4">
+              <h4 class="fw-semibold mb-3 text-center text-light">
+                Enter YouTube Video Link
+              </h4>
+              <!-- <div class="input-group">
+                <input
+                  id="youtubeLink"
+                  type="url"
+                  placeholder="Paste YouTube Link..."
+                  class="form-control"
+                />
+                <button id="generateBlogButton" class="btn btn-primary">
+                  <i class="bi bi-robot"></i> Generate
+                </button>
+              </div> -->
+              <div
+                class="searchbox aos-init aos-animate"
+                data-aos="fade-zoom-in"
+                data-aos-duration="1500"
+              >
+                <div class="searchwrapper">
+                  <div class="row align-items-center">
+                    <!-- Input Field -->
+                    <div class="col-md-9">
+                      <form>
+                        <input
+                          id="youtubeLink"
+                          type="url"
+                          placeholder="Paste YouTube Link..."
+                          class="form-control"
+                        />
+                      </form>
+                    </div>
 
-      @-webkit-keyframes rotate {
-        from {
-          -webkit-transform: rotate(0deg);
-        }
-        to {
-          -webkit-transform: rotate(360deg);
-        }
-      }
+                    <!-- Button -->
+                    <div class="col-lg-3">
+                      <form>
+                        <button
+                          id="generateBlogButton"
+                          class="btn default-btn w-100"
+                          type="submit"
+                        >
+                          <i class="bi bi-robot"></i> Generate
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      .load {
-        width: 100px;
-        height: 100px;
-        margin: 110px auto 0;
-        border: solid 10px #8822aa;
-        border-radius: 50%;
-        border-right-color: transparent;
-        border-bottom-color: transparent;
-        -webkit-transition: all 0.5s ease-in;
-        -webkit-animation-name: rotate;
-        -webkit-animation-duration: 1s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-timing-function: linear;
+            <!-- Loading Spinner -->
+            <div id="loading-circle" class="text-center my-4 d-none">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2 text-light">
+                Generating your blog... please wait.
+              </p>
+            </div>
 
-        transition: all 0.5s ease-in;
-        animation-name: rotate;
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-    </style>
-  </head>
-  <body class="flex flex-col min-h-scrren bg-gray-100 font-sans antialised">
-    <!-- Navbar -->
-    <nav class="bg-blue-600 p-4 text-white flex justify-between">
-      <div>
-        <h1 class="text-3xl font-bold">AI Blog Generator</h1>
-      </div>
-      <div>
-        <a href="#" class="text-white hover:underline mx-4"
-          >Welcome {{ user.username }}</a
-        >
-        <a href="/blog-list" class="text-white hover:underline mx-4"
-          >Saved Blog Posts</a
-        >
-        <a href="#" class="text-white hover:underline">Logout</a>
-      </div>
-    </nav>
-
-    <br />
-    <br />
-
-    <!-- Main -->
-    <div class="flex-grow container mx-auto mt-10 px-4 sm:px-0">
-      <div
-        class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 flex flex-col"
-      >
-        <!-- Introduction section -->
-        <div class="text-center">
-          <h2 class="text-2xl font-semibold mb-4">
-            Welcome to the AI Blog Generator
-          </h2>
-          <p class="text-gray-700">
-            Generate high-quality blog articles from YouTube videos using
-            artificial intelligence. Simply enter the link to the YouTube video
-            below and let the AI create the content for you!
-          </p>
-        </div>
-
-        <br />
-
-        <!-- Youtube section -->
-        <div>
-          <h2 class="text-xl mb-4 font-semibold">Enter Youtube Video Link</h2>
-          <div class="flex space-x-4">
-            <input
-              id="youtubeLink"
-              type="url"
-              placeholder="Paste Youtube Link..."
-              class="flex-grow p-2 border border-blue-400 rounded-l-md"
-            />
-            <button
-              id="generateBlogButton"
-              class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors"
-            >
-              Generate
-            </button>
+            <!-- Blog Output -->
+            <section class="mt-5">
+              <h4 class="fw-semibold mb-3 text-center text-light">
+                Generated Blog Article
+              </h4>
+              <div
+                id="blogContent"
+                class="border rounded p-3"
+                style="min-height: 100px"
+              >
+                <p class="text-center text-light">
+                  Your generated blog will appear here.
+                </p>
+              </div>
+            </section>
           </div>
         </div>
 
-        <!-- section for loading circle -->
-        <div style="display: none" id="loading-circle" class="load"></div>
-
-        <!-- Generated Blog Display Section -->
-        <section class="mt-10 flex-grow">
-          <h2 class="text-xl mb-4 font-semibold">Generated Blog Article</h2>
-          <div id="blogContent" class="mt-2 text-gray-700 space-y-4"></div>
-        </section>
+        <!-- Footer -->
+        <footer class="text-center mt-4">
+          <small class="text-muted">
+            Powered by
+            <a href="#" class="text-decoration-none fw-bold"
+              >Code With Fatma</a
+            >
+          </small>
+        </footer>
       </div>
     </div>
+  </div>
+</section>
+{% endblock %} {% block scripts %}
+<script>
+  const generateBtn = document.getElementById("generateBlogButton");
+  const youtubeInput = document.getElementById("youtubeLink");
+  const blogContent = document.getElementById("blogContent");
+  const loadingCircle = document.getElementById("loading-circle");
 
-    <footer class="text-center p-4 text-blacl mt-6">
-      Powered by
-      <a href="https://www.youtube.com/codewithFatma">Code With Fatma</a>
-    </footer>
+  generateBtn.addEventListener("click", async () => {
+    const youtubeLink = youtubeInput.value.trim();
 
-    <script>
-      document
-        .getElementById("generateBlogButton")
-        .addEventListener("click", async () => {
-          const youtubeLink = document.getElementById("youtubeLink").value;
-          const blogContent = document.getElementById("blogContent");
+    if (!youtubeLink) {
+      alert("Please enter a YouTube link.");
+      return;
+    }
 
-          if (youtubeLink) {
-            document.getElementById("loading-circle").style.display = "block";
+    loadingCircle.classList.remove("d-none");
+    blogContent.innerHTML = ""; // Clear old content
 
-            blogContent.innerHTML = ""; // Clear previous content
+    try {
+      const response = await fetch("/generate-blog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ link: youtubeLink }),
+      });
 
-            const endpointUrl = "/generate-blog";
+      const data = await response.json();
 
-            try {
-              const response = await fetch(endpointUrl, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ link: youtubeLink }),
-              });
+      if (data.content) {
+        blogContent.innerHTML = data.content;
+      } else {
+        blogContent.innerHTML =
+          '<div class="alert alert-warning">No blog content returned. Try again.</div>';
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      blogContent.innerHTML =
+        '<div class="alert alert-danger">Something went wrong. Please try again later.</div>';
+    }
 
-              const data = await response.json();
-
-              blogContent.innerHTML = data.content;
-            } catch (error) {
-              console.error("Error occurred:", error);
-              alert("Something went wrong. Please try again later.");
-            }
-            document.getElementById("loading-circle").style.display = "none";
-          } else {
-            alert("Please enter a YouTube link.");
-          }
-        });
-    </script>
-  </body>
-</html>
+    loadingCircle.classList.add("d-none");
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,99 @@
+.navbar{
+    background-color: #05051E !important;
+    border-bottom: 1px solid #ffffff36;
+}
+
+.nav-link, .navbar-text{
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #fff;
+}
+
+.navbar-brand {
+    line-height: 1;
+    padding: 0;
+    font-size: 32px;
+    line-height: 1;
+    padding: 0;
+    font-family:  'DM Sans', sans-serif;;
+    font-weight: 900;
+    color: #fff;
+}
+
+.default-btn {
+    background:  linear-gradient(90deg, #ff8cda 50%, #ff4da6 100%);
+    transition:.5s;
+    padding: 15px 15px 15px 15px;
+    color: #fff;
+    display: inline-block;
+    border-radius: 5px;
+    position: relative;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    width: 150px;
+    text-align: center;
+}
+.navbar-nav .nav-link.active {
+    text-decoration: underline;
+    text-decoration-color: #ff4da6;  
+    text-decoration-thickness: 2px; 
+    text-underline-offset: 8px;     
+    color: #fff;       
+
+}
+/* hero section ------------------- */
+.hero-sec{
+    background-image: url('/static/blog_generator/images/background-main.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 100px;
+    background-color: #05051E;
+}
+
+.card{
+    background-color: transparent;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ff0080 0%, #ff8cda 50%, #ff4da6 100%);
+    background-clip: text;
+    color: transparent;
+    
+
+}
+h1.gradient-text{
+    font-size: 65px;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(255, 0, 128, 0.6);
+
+}
+.hero-p{
+    font-size: 24px;
+}
+
+.searchwrapper{
+    padding: 8px 12px 8px 12px;
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: inset 0px 4px 98px rgba(40, 84, 125, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+}
+
+.searchwrapper .form-control{
+    background-color: transparent;
+    border: none;
+}
+
+.searchwrapper .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.8); 
+}
+a{
+    text-decoration: none;
+}
