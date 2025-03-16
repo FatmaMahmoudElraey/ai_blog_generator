@@ -1,29 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
 
-{% extends 'base.html' %} 
-{% load static %} 
 {% block title %}
-Login
+Blogs
 {% endblock %}
-{% block content %}
-    <!-- Main Content Container -->
-    <div class="container mx-auto mt-10 px-4 sm:px-0">
-      <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <!-- Blog posts section -->
-        <section>
-          <h2 class="text-xl mb-4 font-semibold">All Blog Posts</h2>
-          <div class="space-y-4">
-            {% for article in blog_articles reversed %}
-            <a href="blog-details/{{article.id}}">
-              <div class="border border-gray-300 p-4 rounded-lg">
-                <h3 class="text-lg font-semibold">{{article.youtube_title}}</h3>
-                <p>{{article.generated_content|truncatechars:80}}</p>
-              </div>
-            </a>
-            {% endfor %}
 
-            <!-- Repeat -->
+{% block content %}
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-12"> 
+      <h2 class="h4 mb-5 fw-bold text-center gradient-text">All Blog Posts</h2>
+      <div class="row g-4"> 
+        {% for article in blog_articles reversed %}
+        <div class="col-md-4"> 
+          <div class="card blog-card feature-box h-100 shadow-sm border-0 rounded-4">
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="h5 fw-semibold mb-2">{{ article.youtube_title }}</h3>
+                <p class="text-light mb-3">{{ article.generated_content|truncatechars:80 }}</p>
+              </div>
+              <a href="blog-details/{{ article.id }}" class="gradient-text">Read More</a>
+            </div>
           </div>
-        </section>
+        </div>
+        {% endfor %}
       </div>
     </div>
+  </div>
+</div>
 {% endblock %}

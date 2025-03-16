@@ -21,7 +21,10 @@
     />
     {% load static %}
 
-    <link rel="stylesheet" href="{% static 'blog_generator/styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'blog_generator/css/styles.css' %}"
+    />
 
     <!-- You can add more global CSS files here -->
   </head>
@@ -78,7 +81,9 @@
             {% if user.is_authenticated %}
             <!-- Logout -->
             <li class="nav-item">
-              <a class="default-btn my-2" href="{% url 'logout' %}"> Logout </a>
+              <a class="gradient-text nav-link" href="{% url 'logout' %}">
+                Logout
+              </a>
             </li>
             {% else %}
             <!-- Login -->

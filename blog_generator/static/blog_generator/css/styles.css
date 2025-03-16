@@ -1,5 +1,6 @@
 .navbar{
     background-color: #05051E !important;
+    border-bottom: 1px solid #ffffff36;
 }
 
 .nav-link, .navbar-text{
@@ -24,9 +25,9 @@
 }
 
 .default-btn {
-    background: linear-gradient(94deg, #43A5FE 21.18%, #0064C1 104.4%);
+    background:  linear-gradient(90deg, #ff8cda 50%, #ff4da6 100%);
     transition:.5s;
-    padding: 15px 25px 15px 25px;
+    padding: 15px 15px 15px 15px;
     color: #fff;
     display: inline-block;
     border-radius: 5px;
@@ -40,10 +41,162 @@
 }
 .navbar-nav .nav-link.active {
     text-decoration: underline;
-    text-decoration-color: #43A5FE;  /* Color of the underline */
-    text-decoration-thickness: 2px;  /* Thickness of the underline */
-    text-underline-offset: 8px;      /* Space between text and underline */
-    color: #fff;                     /* Text color */
+    text-decoration-color: #ff4da6;  
+    text-decoration-thickness: 2px; 
+    text-underline-offset: 8px;     
+    color: #fff;       
+
+}
+/* hero section ------------------- */
+.hero-sec{
+    background-image: url('/static/blog_generator/images/background-main.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 100px;
+    background-color: #05051E;
+}
+
+.card{
+    background-color: transparent;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #ff0080 0%, #ff8cda 50%, #ff4da6 100%);
+    background-clip: text;
+    color: transparent;
+}
+h1.gradient-text{
+    font-size: 65px;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(255, 0, 128, 0.6);
+
+}
+.hero-p{
+    font-size: 24px;
+}
+
+.searchwrapper{
+    padding: 8px 12px 8px 12px;
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: inset 0px 4px 98px rgba(40, 84, 125, 0.25);
+    backdrop-filter: blur(15px);
+    border-radius: 5px;
+}
+
+.searchwrapper .form-control{
+    background-color: transparent;
+    border: none;
+}
+
+.searchwrapper .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.8); 
+}
+a{
+    text-decoration: none;
+}
+
+/*  features secc--------------- */
+
+.feature-box {
+    backdrop-filter: blur(3.5px);
+    padding: 75px 30px 35px;
+    position: relative;
+    border: 1px solid #101c37;
+    margin-bottom: 30px;
+    transition: var(--transition);
+    z-index: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+  .feature-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-top: 2px solid #ff4da6; 
+    border-right: 2px solid #ff4da6;
+    border-bottom: 2px solid #ff4da6;
+    transition: all 0.5s ease;
   }
   
+  .feature-box:hover::before {
+    width: 100%;
+  }
+  
+  .feature-box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    height: 100%;
+    border-bottom: 2px solid #ffffff9c;
+    border-left: 2px solid #ffffff9c;
+    border-top: 2px solid #ffffff9c;
+    transition: all 0.5s ease;
+}
+  
+  .feature-box:hover::after {
+    width: 100%;
+  }
+  
+.blog-card{
+    padding: 30px 40px;
+}
+
+/* blogs styling --------------- */
+.blog-card {
+    background-color: #0d0d2b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    transition: all 0.4s ease;
+    position: relative;
+    /* overflow: hidden; */  /* Optional to comment out */
+  }
+  
+  .blog-card:hover {
+    border-color: #ff8cda;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 140, 218, 0.2);
+  }
+  
+  .blog-card::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #ff8cda, #8cdaff);
+    transition: width 0.4s ease;
+    pointer-events: none; /* Add this */
+  }
+  
+  .blog-card:hover::before {
+    width: 100%;
+  }
+  
+  .blog-card .card-body {
+    padding: 1.5rem;
+  }
+  
+  .blog-card h3 {
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .blog-card p {
+    color: #d1d1e9;
+    font-size: 0.95rem;
+  }
+  
+  /* Optional button fix */
+  .btn.default-btn {
+    position: relative;
+    z-index: 2;
+  }
   
